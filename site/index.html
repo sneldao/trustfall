@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>trustfall — a studio of small games about trust</title>
+    <meta
+      name="description"
+      content="trustfall.xyz is home to a family of small interactive experiments about trust, cooperation, and cryptography — starting with Latep, a ZK Prisoner's Dilemma on Stellar."
+    />
+    <meta name="author" content="trustfall" />
+    <link rel="canonical" href="https://www.trustfall.xyz" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.trustfall.xyz" />
+    <meta property="og:title" content="trustfall" />
+    <meta
+      property="og:description"
+      content="A family of small interactive experiments about trust — starting with Latep, a ZK Prisoner's Dilemma on Stellar."
+    />
+    <meta property="og:site_name" content="trustfall" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --bg-glow: #141b33;
+        --text: #f2f0ea;
+        --muted: #8a92ad;
+        --violet: #667eea;
+        --cyan: #4fd1c5;
+        --hairline: rgba(255, 255, 255, 0.08);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 50% -10%,
+            var(--bg-glow),
+            transparent
+          ),
+          var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 24px;
+      }
+      .wordmark {
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(56px, 10vw, 120px);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        background: linear-gradient(120deg, var(--text) 40%, var(--violet));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .tagline {
+        margin-top: 16px;
+        color: var(--muted);
+        font-weight: 300;
+        font-size: clamp(15px, 2vw, 18px);
+        letter-spacing: 0.02em;
+        text-align: center;
+        max-width: 520px;
+      }
+      .grid {
+        margin-top: 72px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        width: 100%;
+        max-width: 860px;
+      }
+      .card {
+        display: block;
+        text-decoration: none;
+        border: 1px solid var(--hairline);
+        border-radius: 16px;
+        padding: 28px 24px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        transition:
+          border-color 0.25s,
+          transform 0.25s,
+          background 0.25s;
+      }
+      .card:hover {
+        border-color: rgba(102, 126, 234, 0.5);
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-2px);
+      }
+      .card.soon {
+        opacity: 0.55;
+        pointer-events: none;
+      }
+      .card-name {
+        font-family: "Instrument Serif", serif;
+        font-size: 28px;
+        color: var(--text);
+      }
+      .card-name .dot {
+        color: var(--cyan);
+      }
+      .card-desc {
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--muted);
+        font-weight: 300;
+      }
+      .card-status {
+        display: inline-block;
+        margin-top: 16px;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+      .card.soon .card-status {
+        color: var(--muted);
+      }
+      footer {
+        margin-top: 72px;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+      }
+      footer a {
+        color: var(--violet);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="wordmark">trustfall</h1>
+    <p class="tagline">
+      A family of small interactive experiments about trust, cooperation, and
+      cryptography.
+    </p>
+
+    <div class="grid">
+      <a class="card" href="https://latep.trustfall.xyz">
+        <div class="card-name">latep<span class="dot">.</span></div>
+        <p class="card-desc">
+          A zero-knowledge Prisoner's Dilemma on Stellar. Learn why trust
+          evolves — then play for real with ZK-protected XLM stakes.
+        </p>
+        <span class="card-status">live →</span>
+      </a>
+
+      <a class="card soon">
+        <div class="card-name">claflin<span class="dot">.</span></div>
+        <p class="card-desc">Coming soon.</p>
+        <span class="card-status">soon</span>
+      </a>
+
+      <a class="card soon">
+        <div class="card-name">· · ·</div>
+        <p class="card-desc">More experiments in the works.</p>
+        <span class="card-status">soon</span>
+      </a>
+    </div>
+
+    <footer>
+      <a href="https://github.com/thisyearnofear">github</a> · trustfall.xyz
+    </footer>
+  </body>
+</html>

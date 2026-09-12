@@ -1,0 +1,34 @@
+# dependencies
+node_modules/
+
+# wrangler/oauth state (contains credentials — never commit)
+.config/
+.wrangler/
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# private docs — anything under private/ or *.private.* stays local
+private/
+*.private.*
+PRIVATE*
+
+# logs
+*.log
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+
+# misc
+*.local.*
+*.tmp
+*.swp
+.cache/
