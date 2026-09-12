@@ -9,9 +9,10 @@ interactive experiments about trust, cooperation, and cryptography.
 | -------------------------------------------------- | --------------------------- | --------------------------------------------------------------- | ------ |
 | [www.trustfall.xyz](https://www.trustfall.xyz)     | `trustfall-hub` (this repo) | —                                                               | live   |
 | [latep.trustfall.xyz](https://latep.trustfall.xyz) | `latep`                     | [thisyearnofear/latep](https://github.com/thisyearnofear/latep) | live   |
-| claflin.trustfall.xyz                              | `claflin`                   | —                                                               | soon   |
+| claflin.trustfall.xyz                              | hosted on Vercel            | —                                                               | soon   |
 
-See [docs/BRANDS.md](docs/BRANDS.md) for how to add a new brand.
+See [docs/BRANDS.md](docs/BRANDS.md) for the DNS architecture and how to add
+a new brand.
 
 ## Structure
 
@@ -40,8 +41,9 @@ login` from this directory to re-authenticate if they expire.
 
 ### DNS
 
-Managed at GoDaddy. `www` is a CNAME → `trustfall-hub.pages.dev`. Each brand
-subdomain CNAMEs to its own `<project>.pages.dev`. See docs/BRANDS.md.
+Currently at GoDaddy (`www` CNAME → `trustfall-hub.pages.dev`); migrating to
+Cloudflare so the apex serves the hub directly — see
+[docs/BRANDS.md](docs/BRANDS.md).
 
 ## Pre-commit
 
