@@ -1,5 +1,7 @@
 # dependencies
 node_modules/
+.svelte-kit/
+build/
 
 # wrangler/oauth state (contains credentials — never commit)
 .config/

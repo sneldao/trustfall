@@ -1,7 +1,7 @@
 # Cloudflare Pages configuration for trustfall-hub
 #
-# Deploy:  npm run deploy   (== wrangler pages deploy --project-name=trustfall-hub)
-# Local:   any static server, e.g. `npx serve site`
+# Deploy:  npm run deploy
+# Local:   npm run dev
 name = "trustfall-hub"
-pages_build_output_dir = "site"
+pages_build_output_dir = "build"
 compatibility_date = "2026-09-12"

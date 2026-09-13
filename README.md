@@ -1,53 +1,45 @@
 # trustfall
 
-The hub for [trustfall.xyz](https://www.trustfall.xyz) — a family of small
-interactive experiments about trust, cooperation, and cryptography.
+[trustfall.xyz](https://www.trustfall.xyz) is a showcase for small interactive experiments in trust, cooperation, AI, and cryptography.
 
-## Brands
+## Projects
 
-| Site                                               | Project                     | Repo                                                            | Status |
-| -------------------------------------------------- | --------------------------- | --------------------------------------------------------------- | ------ |
-| [www.trustfall.xyz](https://www.trustfall.xyz)     | `trustfall-hub` (this repo) | —                                                               | live   |
-| [latep.trustfall.xyz](https://latep.trustfall.xyz) | `latep`                     | [thisyearnofear/latep](https://github.com/thisyearnofear/latep) | live   |
-| claflin.trustfall.xyz                              | hosted on Vercel            | —                                                               | soon   |
+| Project   | Live site                                             | Repository                                                      |
+| --------- | ----------------------------------------------------- | --------------------------------------------------------------- |
+| trustfall | [trustfall.xyz](https://www.trustfall.xyz)            | this repository                                                 |
+| latep     | [latep.trustfall.xyz](https://latep.trustfall.xyz)    | [thisyearnofear/latep](https://github.com/thisyearnofear/latep) |
+| chime     | [chime.trustfall.xyz](https://chime.trustfall.xyz)    | [thisyearnofear/chime](https://github.com/thisyearnofear/chime) |
+| bothy     | [bothyapp.netlify.app](https://bothyapp.netlify.app/) | [thisyearnofear/bothy](https://github.com/thisyearnofear/bothy) |
+| elcaro    | [elcaro.trustfall.xyz](https://elcaro.trustfall.xyz/) | [udirobert/elcaro](https://github.com/udirobert/elcaro)         |
+| srelok    | [srelok.netlify.app](https://srelok.netlify.app/)     | [sneldao/srelok](https://github.com/sneldao/srelok)             |
 
-See [docs/BRANDS.md](docs/BRANDS.md) for the DNS architecture and how to add
-a new brand.
+## Stack
 
-## Structure
+The hub is a statically prerendered SvelteKit site. Its interactive field uses Three.js, prefers WebGPU, and falls back to WebGL when needed.
 
+- `src/routes/+page.svelte` — project index and editorial UI
+- `src/lib/ShowcaseScene.svelte` — deferred interactive scene
+- `docs/BRANDS.md` — adding and publishing projects
+
+## Development
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
-site/       → the static hub page (deployed to Cloudflare Pages)
-docs/       → public documentation (committed)
-private/    → private notes (gitignored — never committed)
-```
 
-Anything under `private/` or matching `*.private.*` is gitignored — use it for
-internal notes, plans, and drafts that shouldn't be published.
+`npm run build` writes the deployable static site to `build/`.
 
 ## Deploy
 
 ```bash
-npm install        # one-time: sets up the pre-commit hooks
-npm run deploy     # wrangler pages deploy → trustfall-hub.pages.dev + www.trustfall.xyz
+npm run deploy
 ```
 
-### Cloudflare account
+The deploy command builds the site and publishes `build/` to the `trustfall-hub` Cloudflare Pages project.
 
-Wrangler in this repo is pinned to the shared trustfall Cloudflare account
-(`papaandthejimjams@gmail.com`) via `XDG_CONFIG_HOME=".config"` in `.env`
-(gitignored). Credentials live in `.config/.wrangler/` — run `npx wrangler
-login` from this directory to re-authenticate if they expire.
+## Checks
 
-### DNS
-
-Currently at GoDaddy (`www` CNAME → `trustfall-hub.pages.dev`); migrating to
-Cloudflare so the apex serves the hub directly — see
-[docs/BRANDS.md](docs/BRANDS.md).
-
-## Pre-commit
-
-Husky runs on every commit:
-
-- `secretlint "**/*"` — blocks committing secrets/keys
-- `lint-staged` — prettier on staged files
+Pre-commit hooks run Secretlint and Prettier on staged files. Keep credentials and private notes out of the repository; `.env`, `.config/`, and `private/` are ignored.

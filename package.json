@@ -4,7 +4,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "deploy": "wrangler pages deploy --project-name=trustfall-hub",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler pages deploy build --project-name=trustfall-hub",
     "format": "prettier . --write",
     "prepare": "husky"
   },
@@ -20,5 +23,12 @@
     "**/*": [
       "prettier --write --ignore-unknown"
     ]
+  },
+  "dependencies": {
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.70.3",
+    "svelte": "^5.57.0",
+    "three": "^0.186.0",
+    "vite": "^8.3.0"
   }
 }
