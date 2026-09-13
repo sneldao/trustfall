@@ -34,3 +34,10 @@ Thumbs.db
 *.tmp
 *.swp
 .cache/
+
+# video scratch — render cache + source clips (not app assets;
+# the clips the site ships live in static/clips/)
+.remotion/
+assets/*.mp4
+assets/*.mov
+assets/*.webm
