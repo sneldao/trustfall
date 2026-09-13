@@ -1,0 +1,94 @@
+{
+  "assets": {
+    "397d01ac": {
+      "id": "397d01ac",
+      "type": "video",
+      "src": "latep_generated_test.mp4",
+      "duration_s": 4,
+      "resolution": "720p",
+      "provider": "veo-3.1",
+      "generation": {
+        "prompt": "A seamless-feeling 4-second abstract motion-graphics loop for a futuristic zero-knowledge trust game called Latep: two opposing streams of glowing amber and cyan particles race toward a central translucent glass commitment tile, briefly split into two possible paths, then snap into a luminous sealed square while the particles continue orbiting. Rich saturated orange, electric cyan, violet, and deep indigo palette; crisp graphic design, energetic mini-trailer pacing, elegant liquid-glass refraction, subtle chromatic aberration, no people, no logos, no readable text, no audio, locked-off centered camera, designed to crop cleanly into a rounded landscape card.",
+        "model": "veo-3.1-generate-preview",
+        "operation_id": "models/veo-3.1-generate-preview/operations/3psdefa75zh3",
+        "use_case": "text_to_video",
+        "aspect_ratio": "16:9",
+        "resolution": "720p",
+        "duration_seconds": 4,
+        "status": "generating"
+      },
+      "created_at": "2026-09-13T07:28:46Z",
+      "tags": null
+    },
+    "elevenlabs-latep-01": {
+      "id": "elevenlabs-latep-01",
+      "type": "video",
+      "src": "latep_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "BFB9mVFp2ywbZDnvA7Dr",
+      "duration_s": 4,
+      "status": "completed",
+      "tags": ["latep", "trailer-test", "generated", "review"]
+    },
+    "elevenlabs-latep-variety": {
+      "id": "elevenlabs-latep-variety",
+      "type": "video",
+      "src": "latep_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "KcRVXe0qFI0biulbu2Zw",
+      "duration_s": 6,
+      "status": "completed",
+      "tags": ["latep", "trailer-loop", "generated", "review"]
+    },
+    "elevenlabs-srelok-variety": {
+      "id": "elevenlabs-srelok-variety",
+      "type": "video",
+      "src": "srelok_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "Tj8x1UFljenA3eJOQFr9",
+      "duration_s": 6,
+      "status": "completed",
+      "tags": ["srelok", "trailer-loop", "generated", "review"]
+    },
+    "elevenlabs-claflin-variety": {
+      "id": "elevenlabs-claflin-variety",
+      "type": "video",
+      "src": "claflin_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "16eKADiDyI14djNkwOjJ",
+      "duration_s": 6,
+      "status": "completed",
+      "tags": ["claflin", "trailer-loop", "generated", "review"]
+    },
+    "elevenlabs-chime-variety": {
+      "id": "elevenlabs-chime-variety",
+      "type": "video",
+      "src": "chime_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "ZvwJQ8T4uuYbcY32oDyo",
+      "duration_s": 6,
+      "status": "completed",
+      "tags": ["chime", "trailer-loop", "generated", "review"]
+    },
+    "elevenlabs-chime-replacement": {
+      "id": "elevenlabs-chime-replacement",
+      "type": "video",
+      "src": "chime_elevenlabs_replacement.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "6NyfoLiWP5niBbYbeUmN",
+      "duration_s": 6,
+      "status": "completed",
+      "tags": ["chime", "trailer-loop", "generated", "replacement", "review"]
+    },
+    "elevenlabs-claflin-replacement": {
+      "id": "elevenlabs-claflin-replacement",
+      "type": "video",
+      "src": "claflin_elevenlabs_replacement.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "TqP0F6jQ2J6PnqzjvQdQ",
+      "duration_s": 6,
+      "status": "completed",
+      "tags": ["claflin", "trailer-loop", "generated", "replacement", "review"]
+    }
+  }
+}

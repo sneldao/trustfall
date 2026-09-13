@@ -1,5 +1,7 @@
 <script>
+  import ProjectModal from '$lib/ProjectModal.svelte';
   import ShowcaseScene from '$lib/ShowcaseScene.svelte';
+
 
   const projects = [
     {
@@ -7,6 +9,7 @@
       kicker: 'ZK game · Stellar',
       description: 'Trust, sealed before it is revealed.',
       href: 'https://latep.trustfall.xyz',
+      video: '/clips/latep_elevenlabs_test.mp4',
       palette: ['#ff5c35', '#f5d67b', '#35111d']
     },
     {
@@ -14,6 +17,7 @@
       kicker: 'AI agents · Markets',
       description: 'Follow or fade the window.',
       href: 'https://chime.trustfall.xyz',
+      video: '/clips/chime_elevenlabs_replacement.mp4',
       palette: ['#ffdc2e', '#ff6247', '#351163']
     },
     {
@@ -21,6 +25,7 @@
       kicker: 'Climate risk · Decisions',
       description: 'The agent watches. The human calls.',
       href: 'https://bothyapp.netlify.app/',
+      video: '/clips/bothy_elevenlabs_test.mp4',
       palette: ['#d8ff70', '#5d8e73', '#172a34']
     },
     {
@@ -28,6 +33,7 @@
       kicker: 'AI security · Detection',
       description: 'See what your agent cannot.',
       href: 'https://elcaro.trustfall.xyz/',
+      video: '/clips/elcaro_elevenlabs_test.mp4',
       palette: ['#78f7ff', '#2365e8', '#08152d']
     },
     {
@@ -35,24 +41,29 @@
       kicker: 'Kleros · Curation',
       description: 'Names for the untagged.',
       href: 'https://srelok.netlify.app/',
+      video: '/clips/srelok_elevenlabs_test.mp4',
       palette: ['#ff4f91', '#9339ff', '#1b0c31']
     },
     {
       name: 'claflin',
       kicker: 'Research · Soon',
-      description: 'A study of coordination.',
+      description: 'A voice-first brokerage desk for paper trading, estimates, and auditable records.',
+      details: 'Claflin is a Deco-futurist trading house. Choose a tokenized stock on Base, dictate or write an instruction, review a time-limited venue estimate, and explicitly record a paper trade. Nothing is signed or submitted onchain.',
+      highlights: ['Voice-first desk', 'Paper trading', 'Base estimates', 'Hetty broker'],
+      video: '/clips/claflin_elevenlabs_replacement.mp4',
       palette: ['#dad8cf', '#777d82', '#181b1e']
     }
   ];
 
   let activeProject = null;
+  let selectedProject = null;
 </script>
 
 <svelte:head>
   <title>trustfall — experiments in trust</title>
   <meta
     name="description"
-    content="An infinite field of experiments in trust, cooperation, AI, and cryptography."
+    content="An infinite field of vivid interactive experiments in trust, cooperation, AI, and cryptography."
   />
 </svelte:head>
 
@@ -60,7 +71,12 @@
   {projects}
   on:projectfocus={(event) => (activeProject = event.detail)}
   on:projectblur={() => (activeProject = null)}
+  on:projectselect={(event) => (selectedProject = event.detail)}
 />
+
+{#if selectedProject}
+  <ProjectModal project={selectedProject} on:close={() => (selectedProject = null)} />
+{/if}
 
 <header class="chrome">
   <a class="wordmark" href="/" aria-label="trustfall home">trustfall</a>

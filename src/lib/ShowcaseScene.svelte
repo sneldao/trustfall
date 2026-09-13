@@ -40,7 +40,16 @@
       camera.position.z = 12;
 
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const textureCache = projects.map((project, index) => createProjectTexture(THREE, project, index));
+      const videoElements = projects.map((project) => (project.video ? createProjectVideo(project.video) : null));
+      const textureCache = projects.map((project, index) =>
+        videoElements[index]
+          ? new THREE.VideoTexture(videoElements[index])
+          : createProjectTexture(THREE, project, index)
+      );
+      textureCache.forEach((texture) => {
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.anisotropy = 4;
+      });
       const cardGeometry = createRoundedPlane(THREE, 3.8, 2.45, 0.26);
       const glassGeometry = createRoundedPlane(THREE, 3.92, 2.57, 0.31);
       const cards = [];
@@ -75,6 +84,16 @@
             isWebGPU
           );
           const image = new THREE.Mesh(cardGeometry, imageMaterial);
+          const titleTexture = createTitleTexture(THREE, project.name, project.kicker);
+          const titleMaterial = new THREE.MeshBasicMaterial({
+            map: titleTexture,
+            transparent: true,
+            depthWrite: false,
+            toneMapped: false
+          });
+          const title = new THREE.Mesh(cardGeometry, titleMaterial);
+          title.scale.set(0.96, 0.96, 1);
+          title.position.z = 0.075;
           const glassMaterial = new THREE.MeshPhysicalMaterial({
             color: project.palette[0],
             transparent: true,
@@ -95,13 +114,15 @@
           glass.position.z = 0.055;
 
           const holder = new THREE.Group();
-          holder.add(image, glass);
+          holder.add(image, title, glass);
           holder.userData = {
             project,
             projectIndex,
             column,
             row,
             imageMaterial,
+            titleMaterial,
+            titleTexture,
             glassMaterial,
             baseScale: 1,
             phase: poolIndex * 0.47
@@ -208,8 +229,8 @@
         const card = pickCard(event);
         setHoveredCard(card);
 
-        if (draggedDistance < 12 && card?.userData.project.href) {
-          window.location.href = card.userData.project.href;
+        if (draggedDistance < 12 && card) {
+          dispatch('projectselect', card.userData.project);
         }
       };
 
@@ -273,8 +294,11 @@
         cardGeometry.dispose();
         glassGeometry.dispose();
         textureCache.forEach((texture) => texture.dispose());
+        videoElements.forEach((video) => video?.pause());
         cards.forEach((card) => {
           card.userData.imageMaterial.dispose();
+          card.userData.titleMaterial.dispose();
+          card.userData.titleTexture.dispose();
           card.userData.glassMaterial.dispose();
         });
         renderer.dispose();
@@ -284,6 +308,50 @@
     initialize();
     return () => cleanup();
   });
+
+  function createTitleTexture(THREE, name, kicker) {
+    const width = 1024;
+    const height = 660;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext('2d');
+    const gradient = context.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, 'rgba(0,0,0,0.12)');
+    gradient.addColorStop(0.58, 'rgba(0,0,0,0.02)');
+    gradient.addColorStop(1, 'rgba(0,0,0,0.72)');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, width, height);
+    context.fillStyle = 'rgba(255,255,255,0.92)';
+    context.font = '600 21px "DM Mono", monospace';
+    context.letterSpacing = '3px';
+    context.fillText(kicker.toUpperCase(), 54, 62);
+    context.fillStyle = '#ffffff';
+    context.font = '600 112px Arial, sans-serif';
+    context.letterSpacing = '-5px';
+    context.fillText(name, 50, height - 74);
+    context.fillStyle = 'rgba(255,255,255,0.82)';
+    context.font = '400 22px Arial, sans-serif';
+    context.letterSpacing = '0';
+    context.fillText('TRUSTFALL / SELECTED EXPERIMENT', 56, height - 30);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.needsUpdate = true;
+    return texture;
+  }
+
+  function createProjectVideo(src) {
+    const video = document.createElement('video');
+    video.src = src;
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.crossOrigin = 'anonymous';
+    video.setAttribute('aria-hidden', 'true');
+    video.play().catch(() => {});
+    return video;
+  }
 
   function createLiquidMaterial(THREE, TSL, map, isWebGPU) {
     if (isWebGPU) {
