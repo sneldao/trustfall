@@ -14,8 +14,8 @@ Each trustfall project is independently deployed. The hub links to the current p
 
 1. Deploy the project and confirm its public URL.
 2. If using `*.trustfall.xyz`, configure the custom domain in its host and add the required DNS record.
-3. Add a `name`, concise `description`, `tags`, and `href` entry to `experiments` in `src/routes/+page.svelte`.
-4. Add the project to the table in `README.md` and this document.
+3. Add the project’s `name`, short `kicker`, concise `description`, `href`, and three-color `palette` to `projects` in `src/routes/+page.svelte`.
+4. Add the project to the tables in `README.md` and this document.
 5. Run `npm run build` and verify the entry opens the intended site.
 
-The index automatically renders the entry. Add a corresponding featured-panel mapping in `src/lib/ShowcaseScene.svelte` when the project should receive hover/focus feedback in the interactive field.
+The infinite field automatically repeats every project card and handles spherical placement, dragging, glass treatment, and linking. Keep card copy short enough to remain legible inside the generated artwork. Use a browser with WebGPU for the full material treatment; WebGL remains the supported fallback.

@@ -15,10 +15,10 @@
 
 ## Stack
 
-The hub is a statically prerendered SvelteKit site. Its interactive field uses Three.js, prefers WebGPU, and falls back to WebGL when needed.
+The hub is a statically prerendered SvelteKit showcase. Its full-screen project field uses Three.js, prefers WebGPU/TSL for liquid-glass materials, and falls back to WebGL when needed. Cards wrap infinitely across a spherical field, respond to inertial mouse/touch dragging, and link directly to each project.
 
-- `src/routes/+page.svelte` — project index and editorial UI
-- `src/lib/ShowcaseScene.svelte` — deferred interactive scene
+- `src/routes/+page.svelte` — project data and minimal showcase chrome
+- `src/lib/ShowcaseScene.svelte` — spherical grid, card artwork, interaction, and materials
 - `docs/BRANDS.md` — adding and publishing projects
 
 ## Development

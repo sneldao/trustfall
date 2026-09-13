@@ -1,122 +1,101 @@
 <script>
   import ShowcaseScene from '$lib/ShowcaseScene.svelte';
 
-  let activeExperiment = null;
-
-  const experiments = [
+  const projects = [
     {
       name: 'latep',
-      description: 'Play an XLM-staked dilemma without exposing your move.',
-      tags: ['Stellar', 'ZK game'],
+      kicker: 'ZK game · Stellar',
+      description: 'Trust, sealed before it is revealed.',
       href: 'https://latep.trustfall.xyz',
-      status: 'Live'
+      palette: ['#ff5c35', '#f5d67b', '#35111d']
     },
     {
       name: 'chime',
-      description: 'Stake on crypto outcomes as AI agents debate both sides.',
-      tags: ['AI agents', 'Prediction market'],
+      kicker: 'AI agents · Markets',
+      description: 'Follow or fade the window.',
       href: 'https://chime.trustfall.xyz',
-      status: 'Live'
+      palette: ['#ffdc2e', '#ff6247', '#351163']
     },
     {
       name: 'bothy',
-      description: 'Accountable flood and winter-access decisions with human sign-off.',
-      tags: ['Climate risk', 'Accountable AI'],
+      kicker: 'Climate risk · Decisions',
+      description: 'The agent watches. The human calls.',
       href: 'https://bothyapp.netlify.app/',
-      status: 'Live'
+      palette: ['#d8ff70', '#5d8e73', '#172a34']
     },
     {
       name: 'elcaro',
-      description: 'Detect indirect prompt injection before an agent can act on it.',
-      tags: ['AI security', 'Threat detection'],
+      kicker: 'AI security · Detection',
+      description: 'See what your agent cannot.',
       href: 'https://elcaro.trustfall.xyz/',
-      status: 'Live'
+      palette: ['#78f7ff', '#2365e8', '#08152d']
     },
     {
       name: 'srelok',
-      description: 'Find and label unknown contracts for the Kleros Scout ecosystem.',
-      tags: ['Kleros', 'Onchain curation'],
+      kicker: 'Kleros · Curation',
+      description: 'Names for the untagged.',
       href: 'https://srelok.netlify.app/',
-      status: 'Live'
+      palette: ['#ff4f91', '#9339ff', '#1b0c31']
     },
     {
       name: 'claflin',
-      description: 'A study of coordination is currently in research.',
-      tags: ['In research'],
-      status: 'Soon'
+      kicker: 'Research · Soon',
+      description: 'A study of coordination.',
+      palette: ['#dad8cf', '#777d82', '#181b1e']
     }
   ];
+
+  let activeProject = null;
 </script>
 
 <svelte:head>
   <title>trustfall — experiments in trust</title>
   <meta
-    property="og:description"
-    content="Small interactive experiments about trust, cooperation, and cryptography."
+    name="description"
+    content="An infinite field of experiments in trust, cooperation, AI, and cryptography."
   />
 </svelte:head>
 
-<ShowcaseScene {activeExperiment} />
+<ShowcaseScene
+  {projects}
+  on:projectfocus={(event) => (activeProject = event.detail)}
+  on:projectblur={() => (activeProject = null)}
+/>
 
-<main>
-  <header>
-    <a class="wordmark" href="/">trustfall</a>
-    <p class="coordinates">studio / 2026</p>
-  </header>
+<header class="chrome">
+  <a class="wordmark" href="/" aria-label="trustfall home">trustfall</a>
+  <p>experiments in trust</p>
+</header>
 
-  <section class="intro" aria-labelledby="title">
-    <p class="eyebrow">An independent field of play</p>
-    <h1 id="title">Experiments<br />in trust.</h1>
-    <p class="thesis">Games, systems, and strange proofs for learning how we cooperate.</p>
-  </section>
+<div class="instructions" aria-hidden="true">
+  <span class="pulse"></span>
+  drag to explore
+</div>
 
-  <section class="index" aria-labelledby="index-title">
-    <div class="index-heading">
-      <p id="index-title">Selected field notes</p>
-      <p>01—0{experiments.length}</p>
-    </div>
+<div class="project-status" aria-live="polite">
+  {#if activeProject}
+    <span>{activeProject.kicker}</span>
+    <strong>{activeProject.name}</strong>
+  {:else}
+    <span>six experiments</span>
+    <strong>move through the field</strong>
+  {/if}
+</div>
 
-    <div class="experiments">
-      {#each experiments as experiment, index}
-        <article
-          class:active={activeExperiment === index}
-          class:inactive={!experiment.href}
-          class="experiment"
-          onmouseenter={() => (activeExperiment = index)}
-          onmouseleave={() => (activeExperiment = null)}
-        >
-          <p class="number">0{index + 1}</p>
-          <div class="project">
-            <h2>{experiment.name}</h2>
-            <p>{experiment.description}</p>
-            <ul aria-label={`${experiment.name} categories`}>
-              {#each experiment.tags as tag}
-                <li>{tag}</li>
-              {/each}
-            </ul>
-          </div>
-          {#if experiment.href}
-            <a
-              class="visit"
-              href={experiment.href}
-              onfocus={() => (activeExperiment = index)}
-              onblur={() => (activeExperiment = null)}
-            >
-              Visit <span aria-hidden="true">↗</span>
-            </a>
-          {:else}
-            <span class="soon">{experiment.status}</span>
-          {/if}
-        </article>
-      {/each}
-    </div>
-  </section>
+<footer>
+  <p>Independent systems, games &amp; strange proofs.</p>
+  <a href="https://github.com/sneldao/trustfall">Source ↗</a>
+</footer>
 
-  <footer>
-    <span>© trustfall</span>
-    <a href="https://github.com/thisyearnofear">GitHub ↗</a>
-  </footer>
-</main>
+<nav class="accessible-index" aria-label="Projects">
+  {#each projects as project}
+    {#if project.href}
+      <a href={project.href}>{project.name}: {project.description}</a>
+    {:else}
+      <span>{project.name}: {project.description} Coming soon.</span>
+    {/if}
+  {/each}
+</nav>
 
 <style>
   :global(*) {
@@ -124,184 +103,103 @@
   }
 
   :global(html) {
-    background: #090a0d;
+    background: #03030b;
+    color-scheme: dark;
   }
 
   :global(body) {
     margin: 0;
-    background: #090a0d;
-    color: #f1f2ed;
+    overflow: hidden;
+    background: #03030b;
+    color: #f8f8f3;
     font-family: 'DM Mono', monospace;
   }
 
-  main {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(1.5rem, 1fr) minmax(0, 72rem) minmax(1.5rem, 1fr);
-    min-height: 100svh;
+  .chrome,
+  footer,
+  .instructions,
+  .project-status {
+    position: fixed;
+    z-index: 3;
     pointer-events: none;
   }
 
-  header,
-  .intro,
-  .index,
-  footer {
-    grid-column: 2;
-    pointer-events: auto;
+  .chrome {
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.25rem 1.4rem;
   }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(225, 255, 215, 0.2);
+  .wordmark,
+  footer a {
+    pointer-events: auto;
   }
 
   .wordmark {
     color: inherit;
     font-family: 'Instrument Serif', Georgia, serif;
-    font-size: 2rem;
+    font-size: clamp(2rem, 3vw, 3rem);
     line-height: 0.8;
     text-decoration: none;
   }
 
-  .coordinates,
-  .eyebrow,
-  .index-heading,
-  .number,
-  .soon,
-  footer {
-    color: rgba(226, 255, 215, 0.82);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .intro {
-    align-self: start;
-    padding: clamp(5.5rem, 15vh, 10rem) 0 clamp(6rem, 18vh, 13rem);
-    max-width: 47rem;
-  }
-
-  .eyebrow {
-    margin: 0 0 1.25rem;
-  }
-
-  h1,
-  h2,
-  p {
+  .chrome p,
+  footer,
+  .instructions,
+  .project-status span {
     margin: 0;
-  }
-
-  h1 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(5rem, 13vw, 10.5rem);
-    font-weight: 400;
-    letter-spacing: -0.07em;
-    line-height: 0.73;
-  }
-
-  .thesis {
-    max-width: 23rem;
-    margin-top: 2rem;
-    color: rgba(241, 242, 237, 0.78);
-    font-size: 0.76rem;
-    line-height: 1.65;
-  }
-
-  .index {
-    padding-bottom: 4rem;
-  }
-
-  .index-heading {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(225, 255, 215, 0.2);
-  }
-
-  .experiments {
-    border-bottom: 1px solid rgba(225, 255, 215, 0.2);
-  }
-
-  .experiment {
-    display: grid;
-    grid-template-columns: 3.75rem minmax(0, 1fr) auto;
-    gap: 1rem;
-    align-items: center;
-    min-height: 11.5rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(225, 255, 215, 0.12);
-  }
-
-  .experiment:last-child {
-    border-bottom: 0;
-  }
-
-  .experiment.active .project h2 {
-    color: #d9ffca;
-  }
-
-  .project h2 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 400;
-    letter-spacing: -0.06em;
-    line-height: 0.88;
-  }
-
-  .project > p {
-    max-width: 25rem;
-    margin-top: 0.75rem;
-    color: rgba(241, 242, 237, 0.84);
-    font-size: 0.75rem;
-    line-height: 1.5;
-  }
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    padding: 0;
-    margin: 1rem 0 0;
-    list-style: none;
-  }
-
-  li {
-    padding: 0.28rem 0.45rem;
-    border: 1px solid rgba(225, 255, 215, 0.26);
-    color: rgba(226, 255, 215, 0.88);
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.64rem;
+    letter-spacing: 0.11em;
     text-transform: uppercase;
   }
 
-  .visit {
-    padding: 0.7rem 0;
-    color: #d9ffca;
-    font-size: 0.68rem;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    transition: transform 180ms ease, color 180ms ease;
+  .instructions {
+    top: 50%;
+    left: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    transform: translateY(-50%) rotate(-90deg) translateX(-50%);
+    transform-origin: left top;
   }
 
-  .visit:hover,
-  .visit:focus-visible {
-    color: #fff;
-    transform: translateX(0.25rem);
+  .pulse {
+    width: 0.42rem;
+    height: 0.42rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    animation: pulse 1.8s ease-out infinite;
   }
 
-  .inactive {
-    opacity: 0.62;
+  .project-status {
+    left: 50%;
+    bottom: 1.25rem;
+    display: grid;
+    justify-items: center;
+    gap: 0.25rem;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .project-status strong {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    font-weight: 400;
+    line-height: 1;
   }
 
   footer {
+    right: 1.4rem;
+    bottom: 1.25rem;
+    left: 1.4rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-self: end;
-    padding: 1.5rem 0;
   }
 
   footer a {
@@ -309,43 +207,71 @@
     text-decoration: none;
   }
 
-  footer a:hover,
-  footer a:focus-visible {
-    color: #fff;
+  .accessible-index {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .accessible-index:focus-within {
+    z-index: 10;
+    top: 1rem;
+    left: 1rem;
+    display: grid;
+    width: min(24rem, calc(100vw - 2rem));
+    height: auto;
+    gap: 0.5rem;
+    padding: 1rem;
+    overflow: visible;
+    clip-path: none;
+    background: #080812;
+    white-space: normal;
+  }
+
+  .accessible-index a,
+  .accessible-index span {
+    color: white;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45);
+    }
+    80%,
+    100% {
+      box-shadow: 0 0 0 0.65rem rgba(255, 255, 255, 0);
+    }
   }
 
   @media (max-width: 640px) {
-    main {
-      grid-template-columns: 1.25rem minmax(0, 1fr) 1.25rem;
+    .chrome {
+      padding: 1rem;
     }
 
-    header {
-      padding-top: 1.25rem;
+    .chrome p,
+    .instructions,
+    footer p {
+      display: none;
     }
 
-    .coordinates {
-      font-size: 0.52rem;
+    footer {
+      right: 1rem;
+      bottom: 1rem;
+      left: auto;
     }
 
-    .intro {
-      padding: 7.5rem 0 8rem;
+    .project-status {
+      bottom: 1rem;
+      max-width: 70vw;
     }
+  }
 
-    h1 {
-      font-size: clamp(4.8rem, 24vw, 7rem);
-    }
-
-    .experiment {
-      grid-template-columns: 2rem minmax(0, 1fr);
-      min-height: 0;
-      padding: 1.5rem 0 1.25rem;
-    }
-
-    .visit,
-    .soon {
-      grid-column: 2;
-      justify-self: start;
-      margin-top: 0.25rem;
+  @media (prefers-reduced-motion: reduce) {
+    .pulse {
+      animation: none;
     }
   }
 </style>
