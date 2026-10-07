@@ -89,6 +89,192 @@
       "duration_s": 6,
       "status": "completed",
       "tags": ["claflin", "trailer-loop", "generated", "replacement", "review"]
+    },
+    "elevenlabs-clawdy-loop": {
+      "id": "elevenlabs-clawdy-loop",
+      "type": "video",
+      "src": "clawdy_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "tvUKesFZcB0p92fb9nCr",
+      "duration_s": 6,
+      "status": "completed",
+      "generation": {
+        "prompt": "Locked-off high three-quarter camera over the sandstone basin arena. The two rover machines continue along their branching route ribbons, amber headlight trails streaming behind them, and the hot amber ribbon pulses once as the chosen route. Fine dust drifts across the cracked floor, flood pools shimmer and ripple softly, heat haze moves at the canyon rim. Everything returns to its starting position by the end. Slow, continuous, seamless loop, no camera movement, no cuts.",
+        "model": "veo-3.1-generate-001",
+        "endpoint": "POST /v1/flows/video",
+        "aspect_ratio": "16:9",
+        "resolution": "720p",
+        "duration_secs": 6,
+        "generate_audio": false,
+        "enhance_prompt": true,
+        "negative_prompt": "text, letters, numbers, words, signage, logos, watermarks, user interface, captions, people, faces, camera cuts, scene changes, warp to a different place, morphing objects, strobing",
+        "seed": 20261007,
+        "start_frame_generation_id": "0WbexidPELCImEdP2y8J",
+        "end_frame_generation_id": "0WbexidPELCImEdP2y8J",
+        "output": "1280x720 @ 24fps, 144 frames, 6.000s, silent, 1377611 bytes",
+        "seam_psnr_db": 30.8,
+        "notes": "Veo 3 rejects enhance_prompt=false with an uncharged model_error; omit the field and accept server-side prompt rewriting. start_frame and end_frame pinned to the same storyboard still to close the loop.",
+        "created_at": "2026-10-07T18:24:20Z",
+        "storyboard_pin": "lens://8e74e6a99e869894fae508829e3c76dc0cbd0f4b0acfded10900e34948b9e9f1"
+      },
+      "tags": [
+        "clawdy",
+        "trailer-loop",
+        "generated",
+        "storyboard-chained",
+        "review"
+      ]
+    },
+    "elevenlabs-grunds-loop": {
+      "id": "elevenlabs-grunds-loop",
+      "type": "video",
+      "src": "grunds_elevenlabs_test.mp4",
+      "provider": "elevenlabs-flows-video",
+      "generation_id": "1anokZyshk6kpXbqk9rB",
+      "duration_s": 6,
+      "status": "completed",
+      "generation": {
+        "prompt": "Locked-off camera down the cobbled coffee district street at dawn. The luminous conversation arcs flow and re-route between the three awning stands, steam curls up from the cup, faceless patrons shift weight and step forward in the queues, lantern light flickers on the wet stones, bean sacks settle. Everything returns to its starting position by the end. Slow, continuous, seamless loop, no camera movement, no cuts.",
+        "model": "veo-3.1-generate-001",
+        "endpoint": "POST /v1/flows/video",
+        "aspect_ratio": "16:9",
+        "resolution": "720p",
+        "duration_secs": 6,
+        "generate_audio": false,
+        "enhance_prompt": true,
+        "negative_prompt": "text, letters, numbers, words, signage, logos, watermarks, user interface, captions, people, faces, camera cuts, scene changes, warp to a different place, morphing objects, strobing",
+        "seed": 20261008,
+        "start_frame_generation_id": "8rVHnFkvRBpRvsOZkXZu",
+        "end_frame_generation_id": "8rVHnFkvRBpRvsOZkXZu",
+        "output": "1280x720 @ 24fps, 144 frames, 6.000s, silent, 876304 bytes",
+        "seam_psnr_db": 35.4,
+        "notes": "Veo 3 rejects enhance_prompt=false with an uncharged model_error; omit the field and accept server-side prompt rewriting. start_frame and end_frame pinned to the same storyboard still to close the loop.",
+        "created_at": "2026-10-07T18:24:20Z",
+        "storyboard_pin": "lens://f06f055def006498258fc00703cd586da458a1ff2a3e397299b12f145679b923"
+      },
+      "tags": [
+        "grunds",
+        "trailer-loop",
+        "generated",
+        "storyboard-chained",
+        "review"
+      ]
+    },
+    "elevenlabs-clawdy-storyboard-a": {
+      "id": "elevenlabs-clawdy-storyboard-a",
+      "type": "image",
+      "provider": "elevenlabs-flows-image",
+      "generation_id": "0WbexidPELCImEdP2y8J",
+      "status": "completed",
+      "generation": {
+        "model": "gemini-3.1-flash-image",
+        "aspect_ratio": "16:9",
+        "resolution": "2K",
+        "endpoint": "POST /v1/flows/image",
+        "notes": "2752x1536. Permanently pinned to Grove; the ElevenLabs content_url is signed and expires within the hour."
+      },
+      "description": "Sandstone basin arena, branching route ribbons, two rovers with amber trails, one ribbon lit hot as if just called.",
+      "tags": ["clawdy", "storyboard", "generated"],
+      "storage": {
+        "provider": "grove",
+        "uri": "lens://8e74e6a99e869894fae508829e3c76dc0cbd0f4b0acfded10900e34948b9e9f1",
+        "gateway_url": "https://api.grove.storage/8e74e6a99e869894fae508829e3c76dc0cbd0f4b0acfded10900e34948b9e9f1",
+        "storage_key": "8e74e6a99e869894fae508829e3c76dc0cbd0f4b0acfded10900e34948b9e9f1",
+        "sha256_prefix": "29efc01fb398327d",
+        "bytes": 6910992,
+        "acl": {
+          "template": "immutable",
+          "chain_id": 232
+        },
+        "notes": "Immutable ACL on Lens Chain mainnet (chain_id 232): cannot be edited or deleted. Verified byte-identical through the gateway after pinning."
+      }
+    },
+    "elevenlabs-clawdy-storyboard-b": {
+      "id": "elevenlabs-clawdy-storyboard-b",
+      "type": "image",
+      "provider": "elevenlabs-flows-image",
+      "generation_id": "yTJ0nPDDfBtCmJ7l1ORT",
+      "status": "completed",
+      "generation": {
+        "model": "gemini-3.1-flash-image",
+        "aspect_ratio": "16:9",
+        "resolution": "2K",
+        "endpoint": "POST /v1/flows/image",
+        "notes": "2752x1536. Permanently pinned to Grove; the ElevenLabs content_url is signed and expires within the hour."
+      },
+      "description": "Held-out board: black lacquer surface, sandstone rim, single ember trail navigating alone.",
+      "tags": ["clawdy", "storyboard", "generated"],
+      "storage": {
+        "provider": "grove",
+        "uri": "lens://2274b839495f14f1bbadd40850d72fdb8b3a6a70fe280c86f5730ccf7dbde61d",
+        "gateway_url": "https://api.grove.storage/2274b839495f14f1bbadd40850d72fdb8b3a6a70fe280c86f5730ccf7dbde61d",
+        "storage_key": "2274b839495f14f1bbadd40850d72fdb8b3a6a70fe280c86f5730ccf7dbde61d",
+        "sha256_prefix": "7273048d7546ba99",
+        "bytes": 5720887,
+        "acl": {
+          "template": "immutable",
+          "chain_id": 232
+        },
+        "notes": "Immutable ACL on Lens Chain mainnet (chain_id 232): cannot be edited or deleted. Verified byte-identical through the gateway after pinning."
+      }
+    },
+    "elevenlabs-grunds-storyboard-a": {
+      "id": "elevenlabs-grunds-storyboard-a",
+      "type": "image",
+      "provider": "elevenlabs-flows-image",
+      "generation_id": "8rVHnFkvRBpRvsOZkXZu",
+      "status": "completed",
+      "generation": {
+        "model": "gemini-3.1-flash-image",
+        "aspect_ratio": "16:9",
+        "resolution": "2K",
+        "endpoint": "POST /v1/flows/image",
+        "notes": "2752x1536. Permanently pinned to Grove; the ElevenLabs content_url is signed and expires within the hour."
+      },
+      "description": "Three striped-awning stands, faceless patrons, luminous gossip arcs crossing the street, steam and bean sacks.",
+      "tags": ["grunds", "storyboard", "generated"],
+      "storage": {
+        "provider": "grove",
+        "uri": "lens://f06f055def006498258fc00703cd586da458a1ff2a3e397299b12f145679b923",
+        "gateway_url": "https://api.grove.storage/f06f055def006498258fc00703cd586da458a1ff2a3e397299b12f145679b923",
+        "storage_key": "f06f055def006498258fc00703cd586da458a1ff2a3e397299b12f145679b923",
+        "sha256_prefix": "c09114055ea501ae",
+        "bytes": 6790372,
+        "acl": {
+          "template": "immutable",
+          "chain_id": 232
+        },
+        "notes": "Immutable ACL on Lens Chain mainnet (chain_id 232): cannot be edited or deleted. Verified byte-identical through the gateway after pinning."
+      }
+    },
+    "elevenlabs-grunds-storyboard-b": {
+      "id": "elevenlabs-grunds-storyboard-b",
+      "type": "image",
+      "provider": "elevenlabs-flows-image",
+      "generation_id": "XtaLbdy9mzrgUfeJ2dH6",
+      "status": "completed",
+      "generation": {
+        "model": "gemini-3.1-flash-image",
+        "aspect_ratio": "16:9",
+        "resolution": "2K",
+        "endpoint": "POST /v1/flows/image",
+        "notes": "2752x1536. Permanently pinned to Grove; the ElevenLabs content_url is signed and expires within the hour."
+      },
+      "description": "Post-frost: cold light, thinning queues, one still-glowing stand.",
+      "tags": ["grunds", "storyboard", "generated"],
+      "storage": {
+        "provider": "grove",
+        "uri": "lens://a12a8e8111fe797c14533a69f5dfbc3a1da3d1aa875ddc64c64b26018fd4bb18",
+        "gateway_url": "https://api.grove.storage/a12a8e8111fe797c14533a69f5dfbc3a1da3d1aa875ddc64c64b26018fd4bb18",
+        "storage_key": "a12a8e8111fe797c14533a69f5dfbc3a1da3d1aa875ddc64c64b26018fd4bb18",
+        "sha256_prefix": "05602b131b4f9f93",
+        "bytes": 8062718,
+        "acl": {
+          "template": "immutable",
+          "chain_id": 232
+        },
+        "notes": "Immutable ACL on Lens Chain mainnet (chain_id 232): cannot be edited or deleted. Verified byte-identical through the gateway after pinning."
+      }
     }
   }
 }

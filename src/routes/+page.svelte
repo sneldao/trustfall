@@ -22,9 +22,11 @@
     },
     {
       name: 'bothy',
-      kicker: 'Climate risk · Decisions',
-      description: 'The agent watches. The human calls.',
-      href: 'https://bothyapp.netlify.app/',
+      kicker: 'Supply chain · Attestable impact',
+      description: 'Graph the blast radius. Cite the evidence. Keep an owner on the decision.',
+      details: 'Bothy turns a supply-chain disruption into a review-ready impact brief: version-pinned graph evidence, cited claims, authorized review, and a named human who owns the next action. A dependency is evidence of exposure, not proof that a programme stops.',
+      highlights: ['Version-pinned evidence', 'Cited briefs', 'Human sign-off', 'Stress lab'],
+      href: 'https://bothy.trustfall.xyz/',
       video: '/clips/bothy_elevenlabs_test.mp4',
       palette: ['#d8ff70', '#5d8e73', '#172a34']
     },
@@ -45,11 +47,32 @@
       palette: ['#ff4f91', '#9339ff', '#1b0c31']
     },
     {
+      name: 'clawdy',
+      kicker: 'Agent league · Coach & prove',
+      description: 'Coach a rover. Then watch it alone.',
+      details: 'Clawdy is a Clash-first agent league inside a physical world. Call a route, replay the run, approve lessons, and train a real checkpoint — then Prove it on a held-out Match where coaching goes dark. The payoff is watching your agent use what you taught it when you are no longer allowed to help.',
+      highlights: ['Call, replay, coach, train', 'Held-out Prove matches', 'Browser-trained checkpoints', 'Headless builder path'],
+      href: 'https://clawdy.trustfall.xyz/',
+      video: '/clips/clawdy_elevenlabs_test.mp4',
+      palette: ['#ffb347', '#c8503c', '#2b1610']
+    },
+    {
+      name: 'grunds',
+      kicker: '3D micro-economy · Cafés',
+      description: 'You cannot control demand. You can only be ready for it faster.',
+      details: 'Grunds is a live 3D coffee district where players run competing café stands and AI patrons decide where to buy. Real commodity prices, behavioural cohorts, and word-of-mouth gossip all move visibly across the floor.',
+      highlights: ['Real commodity prices', 'Behavioural cohorts', 'Word-of-mouth graph', 'Roaster letters by email'],
+      href: 'https://grunds.trustfall.xyz/',
+      video: '/clips/grunds_elevenlabs_test.mp4',
+      palette: ['#e0b089', '#7a4a2f', '#1a0f0c']
+    },
+    {
       name: 'claflin',
-      kicker: 'Research · Soon',
+      kicker: 'Research desk · Voice-first',
       description: 'A voice-first brokerage desk for paper trading, estimates, and auditable records.',
       details: 'Claflin is a Deco-futurist trading house. Choose a tokenized stock on Base, dictate or write an instruction, review a time-limited venue estimate, and explicitly record a paper trade. Nothing is signed or submitted onchain.',
       highlights: ['Voice-first desk', 'Paper trading', 'Base estimates', 'Hetty broker'],
+      href: 'https://claflin.trustfall.xyz/',
       video: '/clips/claflin_elevenlabs_replacement.mp4',
       palette: ['#dad8cf', '#777d82', '#181b1e']
     }
